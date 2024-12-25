@@ -55,17 +55,18 @@ end
 class BookInStock
   attr_accessor :isbn, :price
 
-  def Create(isbn, price)
-    raise ArgumentError, 'ISBN cannot be null' if isbn.empty?
-    raise ArgumentError, 'Price must be > 0' if price < 0
+  def initialize(isbn, price)
+      raise ArgumentError, 'ISBN cannot be null' if isbn.empty?
+      raise ArgumentError, 'Price must be > 0' if price <= 0
 
-    @isbn = isbn
-    @price = price
+      @isbn = isbn
+      @price = price
 
   end
 
-  def price_to_string() :
-    format("$%.2f",@price)
-    
+  def price_as_string
 
+    format("$%.2f", @price)
+  end
 end
+
